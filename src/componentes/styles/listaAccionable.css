@@ -1,0 +1,25 @@
+.containerLista {
+    width: 100vw;
+    max-width: 500px;
+    margin: var(--margen);
+    padding: var(--entreMargen);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column
+}
+
+.seccionList {
+    cursor: pointer;
+    background: var(--maderaClara);
+    padding: var(--entreMargen);
+    border-radius: 6px;
+    margin: var(--entreMargen) 0;
+    font-weight: bold;
+    letter-spacing: 2px;
+    box-shadow: 2px 2px 2px 2px var(--madera);
+}
+
+.seccionList:hover {
+    transition: all 1s;
+    transform: scale(1.12);
+}

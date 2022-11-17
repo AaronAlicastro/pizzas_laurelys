@@ -1,0 +1,37 @@
+.windowContainers {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.peperoni {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff3900;
+    box-shadow: 1px 1px 0 0 #8f1d00;
+}
+
+.titulos {
+    font-size: var(--textoGrande);
+    font-weight: bold;
+    text-align: center;
+}
+
+.circuloPizza {
+    position: relative;
+    background: var(--contrastePrincipal);
+    padding: 50px;
+    margin: var(--margen) 0;
+    border-radius: 50%;
+    border: 15px solid var(--madera);
+    box-shadow: 4px 4px 4px 3px var(--maderaOscura),
+    inset 3px 3px 5px 5px var(--contrasteSecundario);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

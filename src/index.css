@@ -1,0 +1,29 @@
+:root {
+  /* colores */
+  --fondoPrincipal: #02fa99;
+  --contrastePrincipal: #fff;
+  --contrasteSecundario: rgb(85, 85, 85);
+  --madera: #8d4925;
+  --maderaOscura: #320000;
+  --maderaClara: #c57d56;
+
+  /* textos */
+  --textoGrande: 38px;
+
+  /* margenes */
+  --margen: 15px;
+  --entreMargen: 9px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: var(--fondoPrincipal);
+}
+
+.rowAround {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
