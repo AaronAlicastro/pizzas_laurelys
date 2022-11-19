@@ -2,13 +2,15 @@
   /* colores */
   --fondoPrincipal: #02fa99;
   --contrastePrincipal: #fff;
-  --contrasteSecundario: rgb(85, 85, 85);
-  --madera: #8d4925;
+  --contrasteSecundario: #555555;
+  --contrasteTerciario: #000;
   --maderaOscura: #320000;
+  --madera: #8d4925;
   --maderaClara: #c57d56;
 
   /* textos */
   --textoGrande: 38px;
+  --textoMediano: 23px;
 
   /* margenes */
   --margen: 15px;
@@ -26,4 +28,28 @@ body {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.rowCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* textos */
+
+.titulos {
+  font-size: var(--textoGrande);
+  font-weight: bold;
+  text-align: center;
+}
+
+.textoCentrado {
+  text-align: center;
+}
+
+.des {
+  padding: var(--margen);
+  box-sizing: border-box;
+  text-align: justify;
 }

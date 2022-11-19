@@ -7,6 +7,14 @@
     align-items: center;
 }
 
+.containerLogo {
+    margin-bottom: 50px;
+}
+
+.containerLogo > img {
+    width: 250px;
+}
+
 .peperoni {
     position: absolute;
     width: 20px;
@@ -14,12 +22,6 @@
     border-radius: 50%;
     background: #ff3900;
     box-shadow: 1px 1px 0 0 #8f1d00;
-}
-
-.titulos {
-    font-size: var(--textoGrande);
-    font-weight: bold;
-    text-align: center;
 }
 
 .circuloPizza {
@@ -34,4 +36,75 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.dividirDos {
+    display: flex;
+    padding: 0 var(--margen);
+}
+
+.dividirDos_div {
+    flex-grow: 1;
+    height: fit-content;
+    min-height: 60vh;
+    display: grid;
+    place-items: center;
+    box-sizing: border-box;
+}
+
+.divElegir {
+    background: var(--contrastePrincipal);
+    border-left: 5px solid var(--madera);
+}
+
+.makeEspecial_div_right {
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-rows: repeat(auto-fill, 130px);
+    grid-gap: 20px;
+}
+
+.containerCajaIngredientes {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.containerCajaIngredientes > span {
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.cajaIngredientes {
+    width: 100px;
+    height: 100px;
+    background: var(--madera);
+    border-radius: 12px;
+    box-shadow: inset 1px 1px 3px 3px var(--maderaOscura);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+}
+
+.cajaIngredientes:hover {
+    transition: all 1s;
+    transform: scale(1.12);
+}
+
+.IMG_ingredientes {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.secciones_makeEspecial {
+    width: 150px;
+    height: 100px;
+    display: grid;
+    place-items: center;
 }

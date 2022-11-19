@@ -1,0 +1,16 @@
+.buttons {
+    margin: var(--margen);
+    padding: var(--entreMargen);
+    background: var(--madera);
+    border-radius: 1px solid var(--maderaOscura);
+    color: var(--contrastePrincipal);
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: var(--textoMediano);
+    cursor: pointer;
+}
+
+.buttons:hover {
+    transition: all 1s;
+    transform: scale(1.2);
+}
