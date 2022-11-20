@@ -40,16 +40,18 @@
 
 .dividirDos {
     display: flex;
-    padding: 0 var(--margen);
+    flex-wrap: wrap;
 }
 
 .dividirDos_div {
     flex-grow: 1;
     height: fit-content;
     min-height: 60vh;
+    min-width: 350px;
     display: grid;
     place-items: center;
     box-sizing: border-box;
+    margin: var(--margen) 0;
 }
 
 .divElegir {

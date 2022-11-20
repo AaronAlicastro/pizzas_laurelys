@@ -1,7 +1,6 @@
 .containerLista {
     width: 100vw;
     max-width: 500px;
-    margin: var(--margen);
     padding: var(--entreMargen);
     box-sizing: border-box;
     display: flex;
