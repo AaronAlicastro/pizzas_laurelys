@@ -5,7 +5,7 @@ import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import ListaAccionable from "./componentes/ListaAcciopnable";
 import PizzasCards from "./componentes/PizzasCards";
 import Button from "./componentes/elementos/Button";
-import IMG_logo from "./images/logo1.jpg";
+import IMG_logo from "./images/logo1.jpeg";
 // pizzas
 import IMG_pizza1 from "./images/pizza1.jpeg";
 import IMG_pizza2 from "./images/pizza2.jpeg";
@@ -35,8 +35,10 @@ class App extends Component {
          listaSeleccionadaTiempos: [],
          ingredientesSeleccionados: {
             names: [],
-            images: []
-         }
+            images: [],
+            precios: []
+         },
+         totalEspecial: 10100
       };
       this.eniarPedido = messages => <Button onClick={() => {
          messages = [
@@ -80,22 +82,25 @@ class App extends Component {
       ];
       this.desToCards = [
          { name: "Primavera", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "Tocineta", "Maíz dulce", "Orégano"], precio: 25000 },
-         { name: "Laurelys", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "peperoni", "champiñon", "pimenton", "tocineta", "Maíz dulce", "Orégano"], precio: 20000 },
+         { name: "Laurelys", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "peperoni", "champiñon", "pimenton", "tocineta", "Maíz dulce", "Orégano"], precio: 35000 },
          { name: "Hawuyana", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "Piña en almibal", "Maíz dulce", "Orégano"], precio: 25000 },
          { name: "Margarita", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "Maíz dulce", "Orégano"], precio: 20000 },
-         { name: "Pollo con champiñon", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "Pollo cocido", "Champiñón", "maíz dulce", "Orégano"], precio: 25000 },
+         { name: "Pollo con champiñon", des: ["Salsa napolitana", "Queso mozzarella", "Jamón ahumado", "Pollo cocido", "Champiñón", "maíz dulce", "Orégano"], precio: 30000 },
       ]
 
       this.ventana = {
          wellcome: () => {
             return (
                <div className="windowContainers">
-                  <div className="containerLogo">
-                     <img src={IMG_logo} alt="logo" />
-                  </div>
-                  <div className="circuloPizza">
-                     <span className="titulos">Pizzas Laurelys</span>
-                     <div className="peperoni" style={{ top: "40px", right: "30px" }}></div>
+                  <div className="containerLogoAndDes">
+                     <div className="containerLogo">
+                        <img src={IMG_logo} alt="logo" />
+                     </div>
+                     <div className="cuadroPizza">
+                        <span className="titulos">Pizzas Laurelys</span>
+                        <div className="peperoni" style={{ top: "6px", right: "8px" }}></div>
+                     </div>
+                     <span>Tan únicas como tú</span>
                   </div>
                   <ListaAccionable lista={this.opcionesWelcome} onClick={index => {
                      if (index == 0) this.setState({ interfaz: "carta" });
@@ -136,7 +141,8 @@ class App extends Component {
                            interfaz: "makeEspecial",
                            ingredientesSeleccionados: {
                               names: [],
-                              images: []
+                              images: [],
+                              precios: []
                            }
                         });
                      }}>¡Pedir una especial!</Button>
@@ -219,21 +225,31 @@ class App extends Component {
          },
          makeEspecial: () => {
             let key = 0;
-            const addIngrediente = (name, img) => {
+            const addIngrediente = (name, precio, img) => {
+               this.state.totalEspecial += precio;
                this.state.ingredientesSeleccionados.names = [name, ...this.state.ingredientesSeleccionados.names];
                this.state.ingredientesSeleccionados.images = [img, ...this.state.ingredientesSeleccionados.images];
-               this.setState({ ingredientesSeleccionados: this.state.ingredientesSeleccionados });
+               this.state.ingredientesSeleccionados.precios = [precio, ...this.state.ingredientesSeleccionados.precios];
+               this.setState({ 
+                  ingredientesSeleccionados: this.state.ingredientesSeleccionados,
+                  totalEspecial: this.state.totalEspecial
+               });
             }
             const deleteIngrediente = index => {
+               this.state.totalEspecial -= this.state.ingredientesSeleccionados.precios.splice(index, 1)[0];
                this.state.ingredientesSeleccionados.images.splice(index, 1);
                this.state.ingredientesSeleccionados.names.splice(index, 1);
-               this.setState({ ingredientesSeleccionados: this.state.ingredientesSeleccionados });
+               this.setState({ 
+                  ingredientesSeleccionados: this.state.ingredientesSeleccionados,
+                  totalEspecial: this.state.totalEspecial
+               });
             }
 
             return (
                <div>
                   <Button onClick={() => this.setState({ interfaz: "carta" })}>{"<<"} volver</Button>
                   <h1 className="titulos">¡Haz tu pizza!</h1>
+                  <h1 className="textoCentrado">Total: {this.state.totalEspecial} </h1>
                   <div className="dividirDos" style={{ margin: "30px var(--margen)", boxSizing: "border-box" }}>
                      <p style={{ flexGrow: "1", fontSize: "var(--textoMediano)" }}>Cada ingrediente que agregues, le aumentará el valor de la pizza según su valor de porción</p>
                      {
@@ -242,7 +258,8 @@ class App extends Component {
                               {
                                  this.eniarPedido([
                                     "Una pizza especial con los siguientes ingredientes",
-                                    ...this.state.ingredientesSeleccionados.names
+                                    ...this.state.ingredientesSeleccionados.names,
+                                    "\n Total: " + this.state.totalEspecial
                                  ])
                               }
                            </div> : ""
@@ -276,67 +293,67 @@ class App extends Component {
                            pimenton,
                      */}
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Salsa napolitana", IMG_salsaNap)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Salsa napolitana", 2600, IMG_salsaNap)}>
                               <img src={IMG_salsaNap} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Salsa napolitana</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Queso mozzarella", IMG_mosarela)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Queso mozzarella", 2600, IMG_mosarela)}>
                               <img src={IMG_mosarela} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Queso mozzarella</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Jamon ahumado", IMG_jamon)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Jamon ahumado", 3100, IMG_jamon)}>
                               <img src={IMG_jamon} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>jamon ahumado</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Maiz dulce", IMG_maizDulce)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Maiz dulce", 1900, IMG_maizDulce)}>
                               <img src={IMG_maizDulce} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Maíz dulce</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Oregano", IMG_oregano)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Oregano", 300, IMG_oregano)}>
                               <img src={IMG_oregano} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Orégano</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Tocineta", IMG_tocineta)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Tocineta", 5100, IMG_tocineta)}>
                               <img src={IMG_tocineta} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Tocineta</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Piña", IMG_pina)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Piña", 5100, IMG_pina)}>
                               <img src={IMG_pina} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>piña</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pollo", IMG_pollo)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pollo", 4100, IMG_pollo)}>
                               <img src={IMG_pollo} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Pollo</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Champiñon", IMG_champi)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Champiñon", 6100, IMG_champi)}>
                               <img src={IMG_champi} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Champiñón</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pepperoni", IMG_peperoni)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pepperoni", 3300, IMG_peperoni)}>
                               <img src={IMG_peperoni} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Pepperoni</span>
                         </div>
                         <div className="containerCajaIngredientes">
-                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pimenton", IMG_pimenton)}>
+                           <div className="cajaIngredientes" onClick={() => addIngrediente("Pimenton", 900, IMG_pimenton)}>
                               <img src={IMG_pimenton} alt="ingredientes" className="IMG_ingredientes" />
                            </div>
                            <span>Pimenton</span>

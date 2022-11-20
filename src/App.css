@@ -7,12 +7,29 @@
     align-items: center;
 }
 
+.containerLogoAndDes {
+    background: var(--contrastePrincipal);
+    padding: 5px 50px;
+    border-top-right-radius: 30%;
+    border-top-left-radius: 30%;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--margen);
+    box-shadow: 4px 4px 0 0 #aaa;
+}
+
 .containerLogo {
-    margin-bottom: 50px;
+    width: 200px;
+    height: 200px;
 }
 
 .containerLogo > img {
-    width: 250px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .peperoni {
@@ -24,18 +41,16 @@
     box-shadow: 1px 1px 0 0 #8f1d00;
 }
 
-.circuloPizza {
+.cuadroPizza {
     position: relative;
-    background: var(--contrastePrincipal);
-    padding: 50px;
+    padding: var(--margen);
     margin: var(--margen) 0;
-    border-radius: 50%;
-    border: 15px solid var(--madera);
-    box-shadow: 4px 4px 4px 3px var(--maderaOscura),
-    inset 3px 3px 5px 5px var(--contrasteSecundario);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    box-shadow: inset 2px 2px 3px 3px #aaa;
+}
+
+.containerLogoAndDes > span {
+    font-weight: bold;
+    letter-spacing: 1px;
 }
 
 .dividirDos {
