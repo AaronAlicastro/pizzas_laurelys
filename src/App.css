@@ -1,127 +1,114 @@
-.windowContainers {
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
+.cursive {
+    font-family: 'Satisfy', cursive;
 }
 
-.containerLogoAndDes {
-    background: var(--contrastePrincipal);
-    padding: 5px 50px;
-    border-top-right-radius: 30%;
-    border-top-left-radius: 30%;
-    min-height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: var(--margen);
-    box-shadow: 4px 4px 0 0 #aaa;
+.btnPequeno {
+    display: inline-block;
+    padding: 5px;
+    width: fit-content;
+    margin: 0;
+}
+
+.normalNegrita {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.totalPanel {
+    min-height: 70vh;
 }
 
 .containerLogo {
-    width: 200px;
-    height: 200px;
-}
-
-.containerLogo > img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.peperoni {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: #ff3900;
-    box-shadow: 1px 1px 0 0 #8f1d00;
+    height: 100vh;
+    width: 100vw;
+    z-index: -1;
+    opacity: .4;
 }
 
-.cuadroPizza {
+.containerLogo > img{
+    width: 40vw;
+}
+
+.totalPanel>h1 {
+    font-family: 'Satisfy', cursive;
+    text-align: center;
+    font-size: 88px;
+}
+
+.totalPanel>span {
+    font-size: 58px;
+}
+
+.shoppingCar {
     position: relative;
-    padding: var(--margen);
-    margin: var(--margen) 0;
-    box-shadow: inset 2px 2px 3px 3px #aaa;
 }
 
-.containerLogoAndDes > span {
-    font-weight: bold;
-    letter-spacing: 1px;
+.shoppingCar>div {
+    position: absolute;
+    top: -10px;
+    right: -8px;
+    min-width: 20px;
+    min-height: 20px;
+    border-radius: 50%;
+    outline: 1px solid var(--color);
+    text-align: center;
+    padding: 3px;
 }
 
-.dividirDos {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.dividirDos_div {
-    flex-grow: 1;
-    height: fit-content;
-    min-height: 60vh;
-    min-width: 350px;
+.grid_cardPizzas {
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(auto-fill, 360px);
+    grid-template-rows: repeat(auto-fill, 360px);
+    padding: 0 30px;
     box-sizing: border-box;
-    margin: var(--margen) 0;
+    grid-gap: 25px;
 }
 
-.divElegir {
-    background: var(--contrastePrincipal);
-    border-left: 5px solid var(--madera);
+.cardPizzas {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    padding: 8px;
+    box-sizing: border-box;
+    border-radius: 12px;
 }
 
-.makeEspecial_div_right {
-    justify-content: center;
-    align-items: center;
-    grid-template-columns: repeat(auto-fill, 100px);
-    grid-template-rows: repeat(auto-fill, 130px);
-    grid-gap: 20px;
+.cardPizzas>* {
+    position: relative;
+    z-index: 10;
 }
 
-.containerCajaIngredientes {
+.cardPizzas>h3 {
+    font-size: 48px;
+}
+
+.cardPizzas>img {
+    position: absolute;
     width: 100%;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    z-index: 0;
 }
 
-.containerCajaIngredientes > span {
+.cortinaPizza {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-color);
+    z-index: 1000;
+}
+
+.cortinaPizza > img {
+    height: 100vh;
+}
+
+.totalCount {
+    width: 100vw;
+    height: 70px;
+    padding: 0;
     font-weight: bold;
-    letter-spacing: 1px;
-}
-
-.cajaIngredientes {
-    width: 100px;
-    height: 100px;
-    background: var(--madera);
-    border-radius: 12px;
-    box-shadow: inset 1px 1px 3px 3px var(--maderaOscura);
-    cursor: pointer;
-    display: grid;
-    place-items: center;
-}
-
-.cajaIngredientes:hover {
-    transition: all 1s;
-    transform: scale(1.12);
-}
-
-.IMG_ingredientes {
-    width: 70%;
-    height: 70%;
-    object-fit: cover;
-    border-radius: 5px;
-}
-
-.secciones_makeEspecial {
-    width: 150px;
-    height: 100px;
-    display: grid;
-    place-items: center;
 }

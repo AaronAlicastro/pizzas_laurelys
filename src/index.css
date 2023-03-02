@@ -1,27 +1,41 @@
 :root {
-  /* colores */
-  --fondoPrincipal: #02fa99;
-  --contrastePrincipal: #fff;
-  --contrasteSecundario: #555555;
-  --contrasteTerciario: #000;
-  --maderaOscura: #320000;
-  --madera: #8d4925;
-  --maderaClara: #c57d56;
-
-  /* textos */
-  --textoGrande: 38px;
-  --textoMediano: 23px;
-
-  /* margenes */
-  --margen: 15px;
-  --entreMargen: 9px;
+  /* texto */
+  --color: #000 !important;
+  --h3-color: #000 !important;
+  --card-background-color: #596b7853 !important;
 }
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background: var(--fondoPrincipal);
+}
+
+nav {
+  padding: 15px 45px;
+  box-sizing: border-box;
+}
+
+nav {
+  flex-wrap: wrap;
+}
+
+.alertaPersonalizada {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-width: 300px;
+  background: #fff;
+  box-shadow: 4.5px 4.5px 0px 0px #ececec;
+}
+
+.alertaPersonalizada_span {
+  word-wrap: break-word;
+  font-weight: bold;
+}
+
+.textoCentrado {
+  text-align: center;
 }
 
 .rowAround {
@@ -38,19 +52,21 @@ body {
   flex-wrap: wrap;
 }
 
-/* textos */
-
-.titulos {
-  font-size: var(--textoGrande);
-  font-weight: bold;
-  text-align: center;
+.columnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.textoCentrado {
-  text-align: center;
+@media (max-width: 400px) {
+  .grid_cardPizzas {
+    padding: 0;
+  }
 }
 
-.des {
-  padding: var(--margen);
-  box-sizing: border-box;
+@media (max-width: 760px) {
+  .cortinaPizza>img {
+    display: none;
+  }
 }
