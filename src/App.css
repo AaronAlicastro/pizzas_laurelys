@@ -93,13 +93,10 @@
 }
 
 .cortinaPizza {
-    position: fixed;
-    top: 0;
-    left: 0;
     width: 100vw;
-    height: 100vh;
+    height: fit-content;
+    min-height: 100vh;
     background: var(--background-color);
-    z-index: 1000;
 }
 
 .cortinaPizza > img {

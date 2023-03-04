@@ -122,8 +122,8 @@ function Main() {
                         <div className="rowCenter">
                             <button className="btnPequeno" onClick={() => {
                                 let mensaje = "Hola, me gustaría hacerte el siguiente pedido \n \n";
-                                mensaje += productosCarrito.map(pr => `${pr.count} -- ${pr.name}`);
-                                window.open(`https://api.whatsapp.com/?phone='573006285380'?send='${mensaje}'`);
+                                mensaje += productosCarrito.map(pr => `${pr.count} -- ${pr.name} \n`);
+                                window.open(`https://api.whatsapp.com/send?phone=573006285380&text=${mensaje}'`);
                             }}>Enviar pedido</button>
                         </div>
                     </div> :
